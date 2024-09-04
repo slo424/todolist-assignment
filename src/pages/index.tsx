@@ -30,6 +30,7 @@ export default function Home() {
       description: desc,
       isCompleted: false,
       isUrgent: false,
+      isDeleted: false
     };
 
     todos.push(newTodo);
@@ -37,7 +38,12 @@ export default function Home() {
   };
 
   const deleteTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    todos.forEach((todo) => {
+      if (todo.id === id) {
+        todo.isDeleted = true;
+      }
+    })
+    setTodos(todos.filter((todo) => todo.isDeleted !== true));
   };
 
   const toggleProperty = useCallback((id: number, property: keyof Pick<Todo, 'isCompleted' | 'isUrgent'>) => {
@@ -72,7 +78,7 @@ export default function Home() {
   };
 
   const displayComplete = () => {
-    return displayTodoList(todos.filter((x) => x.isCompleted));
+    return displayTodoList(todos.filter((x) => x.isCompleted && !x.isDeleted));
   };
 
   return (

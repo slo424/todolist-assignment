@@ -4,4 +4,5 @@ export interface Todo {
     description: string;
     isCompleted: boolean;
     isUrgent: boolean;
+    isDeleted?: boolean;
 }
