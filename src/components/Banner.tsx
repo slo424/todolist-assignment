@@ -37,7 +37,7 @@ const Banner: React.FC = () => {
 
     return (
         <div className="banner" style={{ backgroundImage: `url(${currentImgUrl})` }}>
-            <h1>To Do List</h1>
+            <h1>To-Do List</h1>
             {copyright && (
                 <p className="copyright">{copyright}©</p>
             )}

@@ -9,9 +9,9 @@ interface TodoItemProps {
 }
 
 /* 
- * TodoItem: display each individual To Do item. Each one is an li element with the className set by To Do status.
+ * TodoItem: display each individual To-Do item. Each one is an li element with the className set by To-Do status.
  * These classNames correspond to the border color for the item (red = urgent, green = complete).
- * Each item has a title, description and 3 buttons to modify the To Do itself 
+ * Each item has a title, description and 3 buttons to modify the To-Do itself 
  */
 function TodoItem({ todo, deleteTodo, toggleComplete, toggleUrgent }: TodoItemProps) {
     return (
