@@ -23,7 +23,7 @@ import sampleData from "@/sampleData.json";
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>(sampleData);
 
-  const AddTodo = (title: string, desc: string) => {
+  const AddTodo = useCallback((title: string, desc: string) => {
     const newTodo: Todo = {
       id: todos.length + 1,
       title: title,
@@ -34,17 +34,17 @@ export default function Home() {
     };
 
     todos.push(newTodo);
-    setTodos(todos);
-  };
+    setTodos(todos.filter((todo) => todo.isDeleted !== true));
+  }, [setTodos]);
 
-  const deleteTodo = (id: number) => {
+  const deleteTodo = useCallback((id: number) => {
     todos.forEach((todo) => {
       if (todo.id === id) {
         todo.isDeleted = true;
       }
     })
     setTodos(todos.filter((todo) => todo.isDeleted !== true));
-  };
+  }, [setTodos]);
 
   const toggleProperty = useCallback((id: number, property: keyof Pick<Todo, 'isCompleted' | 'isUrgent'>) => {
     const updatedTodos = todos.map((todo) => {
