@@ -32,10 +32,15 @@ const Banner: React.FC = () => {
         handleResize();
     }, []);
 
-    if (!currentImgUrl)
-        return <p>Banner Loading...</p>;
+    if (!currentImgUrl) {
+        setImgUrl("assets/default-banner.jpg");
+        setHdImgUrl("assets/default-banner.jpg");
+        setCurrentImgUrl("assets/default-banner.jpg");
+        
+        setCopyright("gov.bc.ca 2024");
+    }
 
-    return (
+    return  (
         <div className="banner" style={{ backgroundImage: `url(${currentImgUrl})` }}>
             <h1>To-Do List</h1>
             {copyright && (
